@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">PGONet architecture</title>
+  <desc id="desc">A reconstructed overview of PGONet, a physics-informed generative adversarial network for ocean acoustics.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#eef6f8"/>
+    </linearGradient>
+    <linearGradient id="gen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dbeafe"/>
+      <stop offset="1" stop-color="#bfdbfe"/>
+    </linearGradient>
+    <linearGradient id="disc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fee2e2"/>
+      <stop offset="1" stop-color="#fecaca"/>
+    </linearGradient>
+    <linearGradient id="phys" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dcfce7"/>
+      <stop offset="1" stop-color="#bbf7d0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#64748b" flood-opacity=".16"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+    <marker id="blueArrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="redArrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="650" rx="28" fill="url(#bg)"/>
+  <text x="600" y="54" text-anchor="middle" fill="#17324d" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">Physics-Informed Generative Adversarial Network</text>
+  <text x="600" y="84" text-anchor="middle" fill="#64748b" font-family="Arial, Helvetica, sans-serif" font-size="15">PGONet for advancing solutions in ocean acoustics</text>
+
+  <g filter="url(#shadow)">
+    <rect x="52" y="238" width="174" height="132" rx="18" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+    <text x="139" y="275" text-anchor="middle" fill="#17324d" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Inputs</text>
+    <text x="139" y="306" text-anchor="middle" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="14">sound speed</text>
+    <text x="139" y="331" text-anchor="middle" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="14">source / boundary</text>
+  </g>
+  <path d="M226 304 H278" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="280" y="142" width="340" height="316" rx="22" fill="url(#gen)" stroke="#60a5fa" stroke-width="2"/>
+    <text x="450" y="184" text-anchor="middle" fill="#17324d" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Generator G</text>
+    <text x="450" y="211" text-anchor="middle" fill="#365d87" font-family="Arial, Helvetica, sans-serif" font-size="14">physics-informed solution synthesis</text>
+    <rect x="336" y="243" width="228" height="52" rx="11" fill="#fff" opacity=".86"/>
+    <text x="450" y="275" text-anchor="middle" fill="#1d4ed8" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">truth calculation</text>
+    <path d="M450 296 V322" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <rect x="336" y="331" width="228" height="72" rx="11" fill="#fff" opacity=".86"/>
+    <text x="450" y="360" text-anchor="middle" fill="#1d4ed8" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">convolution +</text>
+    <text x="450" y="383" text-anchor="middle" fill="#1d4ed8" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">residual connection</text>
+  </g>
+
+  <path d="M620 300 H690" stroke="#2563eb" stroke-width="3.5" marker-end="url(#blueArrow)"/>
+  <text x="655" y="284" text-anchor="middle" fill="#2563eb" font-family="Arial, Helvetica, sans-serif" font-size="12">generated field</text>
+
+  <g filter="url(#shadow)">
+    <rect x="692" y="142" width="236" height="316" rx="22" fill="url(#disc)" stroke="#f87171" stroke-width="2"/>
+    <text x="810" y="184" text-anchor="middle" fill="#17324d" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Discriminator D</text>
+    <text x="810" y="211" text-anchor="middle" fill="#8f4646" font-family="Arial, Helvetica, sans-serif" font-size="14">acoustic-field consistency</text>
+    <rect x="735" y="252" width="150" height="52" rx="11" fill="#fff" opacity=".86"/>
+    <text x="810" y="284" text-anchor="middle" fill="#b91c1c" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">field assessment</text>
+    <path d="M810 306 V332" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <rect x="735" y="341" width="150" height="52" rx="11" fill="#fff" opacity=".86"/>
+    <text x="810" y="373" text-anchor="middle" fill="#b91c1c" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">real / generated</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="968" y="238" width="180" height="132" rx="18" fill="url(#phys)" stroke="#4ade80" stroke-width="2"/>
+    <text x="1058" y="275" text-anchor="middle" fill="#17324d" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Output</text>
+    <text x="1058" y="306" text-anchor="middle" fill="#39714c" font-family="Arial, Helvetica, sans-serif" font-size="14">ocean acoustic field</text>
+    <text x="1058" y="331" text-anchor="middle" fill="#39714c" font-family="Arial, Helvetica, sans-serif" font-size="14">solution estimate</text>
+  </g>
+  <path d="M928 304 H966" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <path d="M1058 370 C1058 545 810 560 810 459" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#redArrow)"/>
+  <text x="1000" y="535" text-anchor="middle" fill="#b91c1c" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">adversarial feedback</text>
+  <path d="M692 459 C670 535 450 548 450 459" fill="none" stroke="#2563eb" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#blueArrow)"/>
+  <text x="580" y="548" text-anchor="middle" fill="#1d4ed8" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700">physics-informed training</text>
+
+  <text x="600" y="611" text-anchor="middle" fill="#64748b" font-family="Arial, Helvetica, sans-serif" font-size="13">Overview reconstructed from the paper's public architecture description</text>
+</svg>

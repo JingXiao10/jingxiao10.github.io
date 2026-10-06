@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="650" height="560" viewBox="0 0 650 560">
+  <defs>
+    <radialGradient id="ambient">
+      <stop offset="0" stop-color="#dbe5dc" stop-opacity=".62"/>
+      <stop offset="1" stop-color="#dbe5dc" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ribbon" x1="120" y1="370" x2="520" y2="130" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#b5c6bc" stop-opacity=".15"/>
+      <stop offset=".5" stop-color="#7f9f95" stop-opacity=".62"/>
+      <stop offset="1" stop-color="#aec4b6" stop-opacity=".19"/>
+    </linearGradient>
+    <linearGradient id="light" x1="150" y1="400" x2="530" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c5d1c3" stop-opacity=".08"/>
+      <stop offset=".52" stop-color="#a6baad" stop-opacity=".52"/>
+      <stop offset="1" stop-color="#d3d9c9" stop-opacity=".12"/>
+    </linearGradient>
+    <linearGradient id="line" x1="85" y1="410" x2="570" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#71988a" stop-opacity="0"/>
+      <stop offset=".32" stop-color="#71988a" stop-opacity=".78"/>
+      <stop offset=".74" stop-color="#71988a" stop-opacity=".68"/>
+      <stop offset="1" stop-color="#71988a" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Abstract flowing forms, not a mesh or a diagram of a specific method. -->
+  <ellipse cx="345" cy="282" rx="250" ry="228" fill="url(#ambient)"/>
+  <g transform="rotate(-12 325 280)">
+    <path d="M82 344 C172 454 218 440 266 264 C311 96 412 87 552 227
+             C420 112 333 139 299 278 C251 470 166 461 82 344Z" fill="url(#ribbon)"/>
+    <path d="M93 365 C191 470 254 399 293 252 C338 82 437 132 560 238
+             C439 153 363 130 327 271 C286 430 190 486 93 365Z" fill="url(#light)"/>
+    <path d="M114 382 C220 443 283 352 320 239 C366 100 453 171 570 251
+             C462 198 392 148 355 259 C316 379 211 465 114 382Z" fill="url(#ribbon)" opacity=".64"/>
+    <path d="M145 399 C254 414 314 312 350 236 C396 141 465 199 577 263
+             C476 224 423 182 386 253 C342 337 253 441 145 399Z" fill="url(#light)" opacity=".8"/>
+    <g fill="none" stroke="url(#line)" stroke-linecap="round">
+      <path d="M65 333 C157 462 222 438 274 259 C320 101 411 99 575 235" stroke-width="1.4"/>
+      <path d="M86 367 C202 492 267 399 309 250 C353 95 438 145 585 251" stroke-width="1"/>
+      <path d="M113 397 C243 450 307 338 346 246 C390 140 471 197 598 272" stroke-width="1.05"/>
+    </g>
+  </g>
+
+  <!-- Sparse accents balance the artwork without creating a network/grid. -->
+  <circle cx="175" cy="176" r="4" fill="#8fa99d" opacity=".7"/>
+  <circle cx="489" cy="390" r="5" fill="#b5ad8c" opacity=".65"/>
+  <circle cx="532" cy="129" r="2.5" fill="#78988c" opacity=".5"/>
+  <circle cx="250" cy="443" r="2" fill="#8ba297" opacity=".45"/>
+  <circle cx="116" cy="275" r="2" fill="#a8b5a6" opacity=".6"/>
+</svg>
