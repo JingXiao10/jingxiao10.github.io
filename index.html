@@ -114,7 +114,7 @@
     .visitor-locations h2 { margin: 0 0 12px; color: #52675c; font-size: 13px; font-weight: 500; }
     .visitor-globe { width: 220px; max-width: 100%; min-height: 240px; margin: 0 auto; position: relative; }
     .visitor-globe-status { display: block; padding-top: 90px; color: #68776d; font-size: 11px; }
-    .visitor-globe-note { color: #68776d; font-size: 11px; line-height: 1.7; }
+    .visitor-globe.has-globe .visitor-globe-status { padding-top: 0; }
     @media (max-width: 991px) {
       .container { max-width: 900px; }
       .about-grid { grid-template-columns: 255px minmax(0, 1fr); gap: 45px; }
@@ -454,7 +454,6 @@
           }
         </script>
       </div>
-      <p class="visitor-globe-note"><span class="i18n" data-zh="基于 IP 的大致位置 · MapMyVisitors" data-en="Approximate IP-based locations · MapMyVisitors">Approximate IP-based locations · MapMyVisitors</span></p>
     </section>
     <div class="visitor-counter" data-counter-path="">
       <span class="visitor-counter-label i18n" data-zh="访问统计" data-en="Visits">Visits</span>
@@ -518,33 +517,47 @@
     window.addEventListener('resize', updateNavigation);
     updateNavigation();
 
-    // Recover from delayed loading; never hide the globe merely because it was slow.
+    // Rendering the sphere does not mean that the location data has loaded.
+    // Continue observing after a timeout so a delayed data response can recover.
     (() => {
       if (!isPublicDeployment()) return;
       const globe = document.querySelector('.visitor-globe');
       const status = globe.querySelector('[role="status"]');
       let timeout;
+      let timedOut = false;
       function checkGlobe() {
         const rendered = globe.querySelector('.mmvst_outer');
         if (!rendered) return false;
-        status.hidden = true;
-        clearTimeout(timeout);
-        observer.disconnect();
+        globe.classList.add('has-globe');
         const link = rendered.querySelector('a');
         if (link) {
           link.setAttribute('aria-label', 'MapMyVisitors visitor statistics');
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
         }
+        // A data response adds markers and/or replaces the generic service link
+        // with the registered site's statistics link (including zero-visit sites).
+        const statisticsURL = link ? new URL(link.href, location.href) : null;
+        const hasStatistics = statisticsURL &&
+          /^(www\.)?(mapmyvisitors|clustrmaps)\.com$/.test(statisticsURL.hostname) &&
+          /^\/site\//.test(statisticsURL.pathname);
+        const hasData = Boolean(rendered.querySelector('.mmvstarker') || hasStatistics);
+        status.hidden = hasData || !timedOut;
+        if (!hasData) return false;
+        clearTimeout(timeout);
+        observer.disconnect();
         return true;
       }
       const observer = new MutationObserver(checkGlobe);
-      observer.observe(globe, { childList: true, subtree: true });
+      observer.observe(globe, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
       if (checkGlobe()) return;
       timeout = setTimeout(() => {
         if (checkGlobe()) return;
-        status.dataset.zh = '访客地球暂不可用';
-        status.dataset.en = 'Visitor globe unavailable';
+        timedOut = true;
+        status.hidden = false;
+        const hasGlobe = Boolean(globe.querySelector('.mmvst_outer'));
+        status.dataset.zh = hasGlobe ? '地点数据暂不可用' : '访客地球暂不可用';
+        status.dataset.en = hasGlobe ? 'Location data unavailable' : 'Visitor globe unavailable';
         status.textContent = document.documentElement.lang === 'en' ? status.dataset.en : status.dataset.zh;
       }, 15000);
     })();
