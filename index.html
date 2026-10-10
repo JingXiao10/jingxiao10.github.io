@@ -110,6 +110,11 @@
     .visitor-counter-label { color: #68776d; font-size: 11px; }
     .visitor-counter-badge { display: block; max-width: 100%; max-height: 28px; width: auto; height: auto; }
     .visitor-counter-status { padding: 2px 10px; border: 1px solid #dce2d9; border-radius: 3px; color: #7c867c; font-size: 11px; }
+    .visitor-locations { margin: 0 auto 24px; max-width: 320px; }
+    .visitor-locations h2 { margin: 0 0 12px; color: #52675c; font-size: 13px; font-weight: 500; }
+    .visitor-globe { width: 220px; max-width: 100%; min-height: 240px; margin: 0 auto; position: relative; }
+    .visitor-globe-status { display: block; padding-top: 90px; color: #68776d; font-size: 11px; }
+    .visitor-globe-note { color: #68776d; font-size: 11px; line-height: 1.7; }
     @media (max-width: 991px) {
       .container { max-width: 900px; }
       .about-grid { grid-template-columns: 255px minmax(0, 1fr); gap: 45px; }
@@ -423,6 +428,34 @@
     </section>
   </main>
   <footer class="footer">
+    <section class="visitor-locations" aria-labelledby="visitor-locations-title">
+      <h2 id="visitor-locations-title"><span class="i18n" data-zh="访客足迹" data-en="Visitor locations">Visitor locations</span></h2>
+      <div class="visitor-globe">
+        <span class="visitor-globe-status i18n" data-zh="发布后显示访客地球" data-en="Visitor globe available after publishing" role="status">Visitor globe available after publishing</span>
+        <script>
+          function isPublicDeployment() {
+            const hostname = location.hostname.toLowerCase().replace(/^\[|\]$/g, '');
+            const octets = hostname.split('.').map(Number);
+            const privateIPv4 = octets.length === 4 && octets.every((part) => Number.isInteger(part) && part >= 0 && part <= 255) &&
+              (octets[0] === 0 || octets[0] === 10 || octets[0] === 127 ||
+               (octets[0] === 172 && octets[1] >= 16 && octets[1] <= 31) ||
+               (octets[0] === 192 && octets[1] === 168) || (octets[0] === 169 && octets[1] === 254));
+            const localHostname = !hostname.includes('.') || /\.(localhost|local|test|invalid|example)$/.test(hostname);
+            return ['http:', 'https:'].includes(location.protocol) && !localHostname && !privateIPv4 && !hostname.includes(':');
+          }
+          // The provider attaches to window.load: keep its official script parser-inserted.
+          // Only this fixed URL is written, and local previews never load either tracker.
+          if (isPublicDeployment()) {
+            const globeStatus = document.querySelector('.visitor-globe-status');
+            globeStatus.dataset.zh = '地球加载中…';
+            globeStatus.dataset.en = 'Loading globe…';
+            globeStatus.textContent = globeStatus.dataset.en;
+            document.write('<script type="text/javascript" id="mmvst_globe" src="https://mapmyvisitors.com/globe.js?d=R_d0or_HjuDvLVTqIDXvewIGt5rdr2QK8XXWV8zpmyU"><\/script>');
+          }
+        </script>
+      </div>
+      <p class="visitor-globe-note"><span class="i18n" data-zh="基于 IP 的大致位置 · MapMyVisitors" data-en="Approximate IP-based locations · MapMyVisitors">Approximate IP-based locations · MapMyVisitors</span></p>
+    </section>
     <div class="visitor-counter" data-counter-path="">
       <span class="visitor-counter-label i18n" data-zh="访问统计" data-en="Visits">Visits</span>
       <img class="visitor-counter-badge" alt="Website visit statistics" decoding="async" referrerpolicy="no-referrer" hidden>
@@ -485,17 +518,40 @@
     window.addEventListener('resize', updateNavigation);
     updateNavigation();
 
+    // Recover from delayed loading; never hide the globe merely because it was slow.
+    (() => {
+      if (!isPublicDeployment()) return;
+      const globe = document.querySelector('.visitor-globe');
+      const status = globe.querySelector('[role="status"]');
+      let timeout;
+      function checkGlobe() {
+        const rendered = globe.querySelector('.mmvst_outer');
+        if (!rendered) return false;
+        status.hidden = true;
+        clearTimeout(timeout);
+        observer.disconnect();
+        const link = rendered.querySelector('a');
+        if (link) {
+          link.setAttribute('aria-label', 'MapMyVisitors visitor statistics');
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        }
+        return true;
+      }
+      const observer = new MutationObserver(checkGlobe);
+      observer.observe(globe, { childList: true, subtree: true });
+      if (checkGlobe()) return;
+      timeout = setTimeout(() => {
+        if (checkGlobe()) return;
+        status.dataset.zh = '访客地球暂不可用';
+        status.dataset.en = 'Visitor globe unavailable';
+        status.textContent = document.documentElement.lang === 'en' ? status.dataset.en : status.dataset.zh;
+      }, 15000);
+    })();
+
     // The same image-based service used by the reference homepage. Never send local previews.
     (() => {
-      const hostname = location.hostname.toLowerCase().replace(/^\[|\]$/g, '');
-      const octets = hostname.split('.').map(Number);
-      const privateIPv4 = octets.length === 4 && octets.every((part) => Number.isInteger(part) && part >= 0 && part <= 255) &&
-        (octets[0] === 0 || octets[0] === 10 || octets[0] === 127 ||
-         (octets[0] === 172 && octets[1] >= 16 && octets[1] <= 31) ||
-         (octets[0] === 192 && octets[1] === 168) || (octets[0] === 169 && octets[1] === 254));
-      const localHostname = !hostname.includes('.') || /\.(localhost|local|test|invalid|example)$/.test(hostname);
-      // IPv6 literals are also excluded; public deployments should use their domain name.
-      if (!['http:', 'https:'].includes(location.protocol) || localHostname || privateIPv4 || hostname.includes(':')) return;
+      if (!isPublicDeployment()) return;
 
       const counter = document.querySelector('.visitor-counter');
       const badge = counter.querySelector('img');
