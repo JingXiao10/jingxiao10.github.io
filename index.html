@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Academic homepage of Jing Xiao.">
   <title>Jing Xiao | Academic Homepage</title>
-  <link rel="preload" as="image" href="images/hero-flow.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --ink: #253833; --body: #4d5551; --muted: #626e65; --link: #3c7063; --line: #e4e7e1; --cream: #f6f5ef; --font-zh: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif; }
+    :root { --ink: #253833; --body: #4d5551; --muted: #626e65; --link: #3c7063; --line: #e4e7e1; --font-zh: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif; }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin: 0; background: #fff; color: var(--body); font: 16px/1.8 "DM Sans", Arial, var(--font-zh); -webkit-font-smoothing: antialiased; }
@@ -32,20 +31,12 @@
     .language-toggle button { padding: 3px 0; border: 0; background: transparent; color: inherit; opacity: .55; font-size: 12px; cursor: pointer; }
     .language-toggle button[aria-pressed="true"] { opacity: 1; font-weight: 600; }
     .site-navigation.is-scrolled { padding: 14px 0; background: rgba(255,255,255,.97); border-bottom-color: var(--line); }
-    .hero { position: relative; display: flex; align-items: center; min-height: 528px; min-height: clamp(528px, 72svh, 704px); background: var(--cream); border-bottom: 1px solid var(--line); overflow: hidden; }
-    .hero-content { position: relative; display: grid; grid-template-columns: 1.15fr 1fr; gap: 18px; align-items: center; padding: 75px 0 76px; }
-    .hero-intro { position: relative; z-index: 1; width: min(450px, calc(100% - 48px)); min-width: 0; justify-self: center; text-align: center; }
-    .hero .hero-greeting { margin: 0 0 20px; color: #748078; font-size: 14px; letter-spacing: .06em; }
-    .hero h1 { margin: 0 0 26px; color: var(--ink); font-family: Georgia, serif; font-size: clamp(64px, 7.1vw, 100px); font-weight: 400; line-height: 1.1; letter-spacing: -.05em; }
-    .hero .hero-role { margin: 0 0 3px; color: #3c4d43; font-size: 19px; font-weight: 500; }
-    .hero .hero-affiliation { max-width: 450px; margin: 0 auto; color: #778177; font-size: 16px; }
-    .hero-art { display: block; width: 115%; max-width: 580px; height: auto; margin-left: -15px; }
-    #about { padding: 90px 0; scroll-margin-top: 65px; }
+    #about { padding: 112px 0 52px; scroll-margin-top: 65px; }
     .about-grid { display: grid; grid-template-columns: 310px minmax(0, 1fr); gap: 80px; align-items: start; }
     .profile { min-width: 0; padding: 0 25px 0 0; border-right: 1px solid var(--line); text-align: center; }
     .portrait-frame { width: 220px; max-width: 100%; margin: 0 auto 24px; }
     .portrait { display: block; width: 100%; height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: contain; }
-    .profile h2 { margin: 0 0 8px; color: var(--ink); font-family: Georgia, serif; font-size: 30px; font-weight: 400; }
+    .profile h1 { margin: 0 0 8px; color: var(--ink); font-family: Georgia, serif; font-size: 30px; font-weight: 400; }
     .role { margin: 0 0 14px; font-size: 15px; color: #626e65; }
     .meta { margin: 4px 0; font-size: 14px; }
     .lab-list { margin: 17px 0; color: var(--muted); font-size: 13px; line-height: 1.9; }
@@ -55,7 +46,7 @@
     .profile-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; margin-top: 20px; font-size: 13px; }
     .profile-links a { padding-bottom: 3px; border-bottom: 1px solid #b6c6ba; }
     .about-content { min-width: 0; }
-    .about-heading { margin: 0 0 26px; font-family: Georgia, serif; font-size: 34px; font-weight: 400; line-height: 1.3; }
+    .section-heading { margin: 0 0 26px; font-family: Georgia, serif; font-size: 34px; font-weight: 400; line-height: 1.3; }
     .about-copy p { margin: 0 0 18px; line-height: 1.9; font-size: 15px; }
     .about-copy .about-school { color: #2469a0; font-weight: 500; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; }
     .about-copy .about-school:hover { color: #174d78; text-decoration-color: currentColor; }
@@ -63,20 +54,17 @@
     .about-copy .about-collaboration { color: #925634; font-weight: 600; }
     .about-copy .about-name { color: var(--ink); font-weight: 600; }
     #news { margin-top: 32px; padding-top: 26px; border-top: 1px solid var(--line); scroll-margin-top: 85px; }
-    #news h2 { margin: 0 0 14px; color: #52675c; font-size: 15px; font-weight: 600; letter-spacing: .03em; }
-    .news-scroll { max-height: 220px; overflow-y: auto; padding: 0 14px 0 0; scrollbar-width: thin; scrollbar-color: #c7d2c6 transparent; }
+    #news .section-heading { margin-bottom: 18px; }
+    .news-scroll { max-height: 220px; overflow-y: auto; padding-right: 14px; scrollbar-width: thin; scrollbar-color: #c7d2c6 transparent; }
     .news-scroll::-webkit-scrollbar { width: 5px; }
     .news-scroll::-webkit-scrollbar-thumb { border-radius: 4px; background: #c7d2c6; }
     .news { list-style: none; padding: 0; margin: 0; }
     .news li { display: grid; grid-template-columns: 99px minmax(0, 1fr); gap: 14px; padding: 9px 0; font-size: 13px; line-height: 1.9; }
     .date { padding-top: 2px; color: var(--muted); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
     .news li[data-date-status="pending"] .date { color: #925634; }
-    .research { padding: 85px 0 55px; background: #f9f9f6; border-top: 1px solid var(--line); scroll-margin-top: 65px; }
-    .research h2 { margin: 0 0 28px; color: var(--ink); text-align: center; font-family: Georgia, serif; font-size: 36px; font-weight: 400; }
-    html:lang(zh-CN) .hero h1,
-    html:lang(zh-CN) .profile h2,
-    html:lang(zh-CN) .about-heading,
-    html:lang(zh-CN) .research h2 { font-family: var(--font-zh); font-weight: 500; letter-spacing: .02em; }
+    .research { padding-bottom: 55px; scroll-margin-top: 85px; }
+    html:lang(zh-CN) .profile h1,
+    html:lang(zh-CN) .section-heading { font-family: var(--font-zh); font-weight: 500; letter-spacing: .02em; }
     .pub { display: grid; grid-template-columns: 280px minmax(0, 1fr); grid-template-areas: "preview info"; gap: 34px; padding: 30px 0; border-top: 1px solid var(--line); align-items: center; }
     .paper-preview { display: block; min-width: 0; }
     /* Hide injected DOI shortcut icons in publications, including late insertions. */
@@ -97,14 +85,14 @@
        sets the first row's height, with two result thumbnails filling below. */
     .paper-figure:first-child { grid-column: 1 / -1; height: auto; aspect-ratio: var(--method-ratio); }
     .paper-figures--resmetamesh .paper-figure:not(:first-child) { object-position: right bottom; }
-    .pub h3 { margin: 0 0 9px; color: #2d443b; font-size: 19px; line-height: 1.5; font-weight: 600; letter-spacing: -.01em; }
-    .authors { margin: 0 0 7px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .pub h3 { margin: 0 0 19px; color: #2d443b; font-size: 18px; line-height: 1.6; font-weight: 600; letter-spacing: -.01em; }
+    .authors { margin: 0 0 17px; color: var(--muted); font-size: 14px; line-height: 1.9; }
     .authors strong { color: #3c5147; }
-    .venue { margin: 0 0 12px; color: #626d60; font-size: 14px; font-style: italic; font-weight: 700; }
-    .pub-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 12px; }
+    .venue { margin: 0 0 20px; color: #626d60; font-size: 13px; line-height: 1.9; font-style: italic; font-weight: 700; }
+    .pub-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; }
     .pub-links a { padding-bottom: 2px; border-bottom: 1px solid #b5c4b7; }
     .pub-links a:hover { border-bottom-color: var(--link); }
-    .footer { padding: 35px 24px; background: #f1f3ee; color: #868e82; text-align: center; font-size: 12px; border-top: 1px solid var(--line); }
+    .footer { padding: 35px 24px; color: #868e82; text-align: center; font-size: 12px; border-top: 1px solid var(--line); }
     .footer p { margin: 0; }
     .visitor-counter { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; min-height: 28px; margin-bottom: 14px; }
     .visitor-counter-label { color: #68776d; font-size: 11px; }
@@ -112,9 +100,10 @@
     .visitor-counter-status { padding: 2px 10px; border: 1px solid #dce2d9; border-radius: 3px; color: #7c867c; font-size: 11px; }
     .visitor-locations { margin: 0 auto 24px; max-width: 320px; }
     .visitor-locations h2 { margin: 0 0 12px; color: #52675c; font-size: 13px; font-weight: 500; }
-    .visitor-globe { width: 220px; max-width: 100%; min-height: 240px; margin: 0 auto; position: relative; }
-    .visitor-globe-status { display: block; padding-top: 90px; color: #68776d; font-size: 11px; }
-    .visitor-globe.has-globe .visitor-globe-status { padding-top: 0; }
+    .visitor-globe { width: 220px; max-width: 100%; margin: 0 auto; position: relative; }
+    .visitor-globe.has-globe:not(.is-unavailable) { min-height: 240px; }
+    .visitor-globe-status { display: block; color: #68776d; font-size: 11px; }
+    .visitor-globe.is-unavailable .mmvst_outer { display: none !important; }
     @media (max-width: 991px) {
       .container { max-width: 900px; }
       .about-grid { grid-template-columns: 255px minmax(0, 1fr); gap: 45px; }
@@ -122,8 +111,6 @@
       .portrait-frame { width: 190px; }
       .navigation-inner { gap: 20px; }
       .navigation-links { gap: 20px; }
-      .hero h1 { font-size: 75px; }
-      .hero-art { width: 110%; }
       .pub { grid-template-columns: 260px minmax(0, 1fr); gap: 26px; }
     }
     @media (max-width: 767px) {
@@ -134,25 +121,23 @@
       .navigation-links a { font-size: 11px; }
       .language-toggle { gap: 8px; padding-left: 12px; }
       .language-toggle button { font-size: 11px; }
-      .hero { min-height: 600px; min-height: min(720px, 82svh); }
-      .hero-content { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 100px 0 55px; }
-      .hero-intro { width: 100%; justify-self: stretch; }
-      .hero .hero-greeting { margin-bottom: 14px; font-size: 12px; }
-      .hero h1 { margin-bottom: 18px; font-size: clamp(56px, 13vw, 74px); }
-      .hero .hero-role { font-size: 16px; }
-      .hero .hero-affiliation { max-width: 290px; font-size: 13px; }
-      .hero-art { width: 260px; max-width: 72%; margin: 0 0 0 auto; }
-      #about { padding: 65px 0; }
-      .about-grid { grid-template-columns: minmax(0, 1fr); gap: 45px; }
-      .profile { width: min(100%, 350px); margin: 0 auto; padding: 0 0 35px; border-right: 0; border-bottom: 1px solid var(--line); }
-      .portrait-frame { width: 180px; }
-      .about-heading, .research h2 { font-size: 30px; }
+      #about { padding: 76px 0 40px; }
+      .about-grid { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+      .profile { width: min(100%, 350px); margin: 0 auto; padding: 0 0 23px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .portrait-frame { width: 130px; margin-bottom: 14px; }
+      .profile h1 { margin-bottom: 4px; line-height: 1.3; }
+      .profile .role { margin-bottom: 8px; }
+      .profile .meta { margin: 3px 0; }
+      .lab-list { margin: 10px 0; line-height: 1.55; }
+      .profile-links { margin-top: 12px; }
+      .section-heading { font-size: 30px; }
       .about-copy p { font-size: 14px; }
       .news li { grid-template-columns: 86px minmax(0, 1fr); font-size: 13px; gap: 9px; }
-      .research { padding: 60px 0 35px; }
+      .research { padding-bottom: 35px; }
       .pub { grid-template-columns: minmax(0, 1fr); grid-template-areas: "preview" "info"; gap: 18px; padding: 24px 0; }
       .paper-media { max-width: 350px; width: 100%; margin: 0 auto; }
-      .pub h3 { font-size: 17px; }
+      .pub h3 { font-size: 16px; }
+      .authors { font-size: 13px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -164,7 +149,6 @@
   <nav class="site-navigation" aria-label="Main navigation">
     <div class="container navigation-inner">
       <div class="navigation-links">
-        <a href="#home"><span class="i18n" data-zh="首页" data-en="Home">Home</span></a>
         <a href="#about"><span class="i18n" data-zh="关于我" data-en="About">About</span></a>
         <a href="#news"><span class="i18n" data-zh="新闻" data-en="News">News</span></a>
         <a href="#publications"><span class="i18n" data-zh="论文" data-en="Research">Research</span></a>
@@ -176,26 +160,14 @@
     </div>
   </nav>
 
-  <header class="hero" id="home">
-    <div class="container hero-content">
-      <div class="hero-intro">
-        <p class="hero-greeting"><span class="i18n" data-zh="你好，我是" data-en="Hello, I'm">Hello, I'm</span></p>
-        <h1><span class="i18n" data-zh="肖劲" data-en="Jing Xiao">Jing Xiao</span></h1>
-        <p class="hero-role"><span class="i18n" data-zh="博士生" data-en="Ph.D. Student">Ph.D. Student</span></p>
-        <p class="hero-affiliation"><span class="i18n" data-zh="国防科技大学" data-en="National University of Defense Technology">National University of Defense Technology</span></p>
-      </div>
-      <img class="hero-art" src="images/hero-flow.svg" alt="" aria-hidden="true" width="650" height="560">
-    </div>
-  </header>
-
-  <main>
-    <section id="about">
+  <main id="home">
+    <div id="about">
       <div class="container about-grid">
         <aside class="profile" aria-label="Personal information">
           <div class="portrait-frame">
             <img class="portrait" src="images/avatar.png" alt="肖劲 / Jing Xiao" width="1254" height="1254">
           </div>
-          <h2><span class="i18n" data-zh="肖劲" data-en="Jing Xiao">Jing Xiao</span></h2>
+          <h1><span class="i18n" data-zh="肖劲" data-en="Jing Xiao">Jing Xiao</span></h1>
           <p class="role"><span class="i18n" data-zh="博士生" data-en="Ph.D. Student">Ph.D. Student</span></p>
           <p class="meta"><span class="i18n" data-zh="国防科技大学" data-en="National University of Defense Technology">National University of Defense Technology</span></p>
           <p class="meta"><span class="i18n" data-zh="计算机科学与技术专业" data-en="Computer Science and Technology">Computer Science and Technology</span></p>
@@ -214,54 +186,58 @@
           <div class="profile-links"><a href="https://scholar.google.com/citations?user=KS6peAEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a></div>
         </aside>
         <div class="about-content">
-          <h2 class="about-heading"><span class="i18n" data-zh="关于我" data-en="About Me">About Me</span></h2>
-      <div class="about-copy" data-lang-block="zh" hidden>
-        <p>你好，我是<strong class="about-name">肖劲</strong>，目前是<a class="about-school" href="https://www.nudt.edu.cn/" target="_blank" rel="noopener">国防科技大学</a>计算机科学与技术专业的<strong class="about-interest">四年级直博生</strong>，于 2023 年 9 月入学，预计于<strong class="about-interest">2028 年 6 月毕业</strong>。本科期间，我就读于<a class="about-school" href="https://www.sysu.edu.cn/" target="_blank" rel="noopener">中山大学</a>信息与计算科学专业（2019–2023）。</p>
-        <p>我的研究兴趣包括<strong class="about-interest">科学计算</strong>、<strong class="about-interest">神经算子</strong>、<strong class="about-interest">物理信息学习</strong>，以及面向复杂科学与工程问题的机器学习方法。我关注如何利用学习型方法求解偏微分方程、生成结构化网格，并为科学计算任务构建高效的代理模型。</p>
-        <p>我目前<strong class="about-collaboration">正在寻找研究实习机会</strong>，方向包括科学计算、神经算子、物理信息学习及相关人工智能领域。也欢迎开展<strong class="about-collaboration">学术交流与合作</strong>，请通过 <a href="mailto:xiaoj10@nudt.edu.cn">xiaoj10@nudt.edu.cn</a> 与我联系。</p>
-      </div>
-      <div class="about-copy" data-lang-block="en">
-        <p>I am <strong class="about-name">Jing Xiao</strong>, a <strong class="about-interest">fourth-year direct-entry Ph.D. student</strong> in Computer Science and Technology at the <a class="about-school" href="https://english.nudt.edu.cn/" target="_blank" rel="noopener">National University of Defense Technology</a>. I began my Ph.D. studies in September 2023 and expect to graduate in <strong class="about-interest">June 2028</strong>. Previously, I obtained my bachelor's degree in Information and Computing Science from <a class="about-school" href="https://www.sysu.edu.cn/sysuen/" target="_blank" rel="noopener">Sun Yat-sen University</a> in 2023.</p>
-        <p>My research interests include <strong class="about-interest">scientific computing</strong>, <strong class="about-interest">neural operators</strong>, <strong class="about-interest">physics-informed learning</strong>, and machine-learning methods for complex scientific and engineering problems. I am particularly interested in learning-based approaches for solving partial differential equations, generating structured meshes, and building efficient surrogate models for scientific computing.</p>
-        <p>I am currently <strong class="about-collaboration">seeking research internship opportunities</strong> in scientific computing, neural operators, physics-informed learning, and related areas of AI. I also welcome <strong class="about-collaboration">academic discussions and research collaborations</strong>. Feel free to reach out at <a href="mailto:xiaoj10@nudt.edu.cn">xiaoj10@nudt.edu.cn</a>.</p>
-      </div>
+          <section aria-labelledby="about-title">
+            <h2 id="about-title" class="section-heading"><span class="i18n" data-zh="关于我" data-en="About Me">About Me</span></h2>
+            <div class="about-copy" data-lang-block="zh" hidden>
+              <p>你好，我是<strong class="about-name">肖劲</strong>，现为<a class="about-school" href="https://www.nudt.edu.cn/" target="_blank" rel="noopener"><strong>国防科技大学</strong></a>计算机科学与技术专业四年级直博生，2023 年 9 月入学，预计于 2028 年 6 月毕业。本科毕业于<a class="about-school" href="https://www.sysu.edu.cn/" target="_blank" rel="noopener"><strong>中山大学</strong></a>信息与计算科学专业（2019–2023）。</p>
+              <p>我的研究兴趣主要包括 <strong class="about-interest">AI for Science、科学计算、大语言模型后训练以及递归自我改进（RSI）</strong>。</p>
+              <p><span aria-hidden="true">🔥🔥🔥</span> 目前，我正在<strong class="about-collaboration">寻找科研实习机会</strong>，同时也非常欢迎学术交流与科研合作。如有意交流或合作，欢迎通过 <a href="mailto:xiaoj10@nudt.edu.cn">xiaoj10@nudt.edu.cn</a> 与我联系。</p>
+            </div>
+            <div class="about-copy" data-lang-block="en">
+              <p>I am <strong class="about-name">Jing Xiao</strong>, a <strong class="about-interest">fourth-year direct-entry Ph.D. student</strong> in Computer Science and Technology at the <a class="about-school" href="https://english.nudt.edu.cn/" target="_blank" rel="noopener">National University of Defense Technology</a>. I began my Ph.D. studies in September 2023 and expect to graduate in <strong class="about-interest">June 2028</strong>. Previously, I obtained my bachelor's degree in Information and Computing Science from <a class="about-school" href="https://www.sysu.edu.cn/sysuen/" target="_blank" rel="noopener">Sun Yat-sen University</a> in 2023.</p>
+              <p>My research interests include <strong class="about-interest">AI for Science, scientific computing, LLM post-training, and recursive self-improvement (RSI)</strong>.</p>
+              <p><span aria-hidden="true">🔥🔥🔥</span> I am currently <strong class="about-collaboration">seeking research internship opportunities</strong> and welcome <strong class="about-collaboration">academic discussions and research collaborations</strong>. Feel free to reach out at <a href="mailto:xiaoj10@nudt.edu.cn">xiaoj10@nudt.edu.cn</a>.</p>
+            </div>
+          </section>
 
-    <section id="news">
-      <h2><span class="i18n" data-zh="新闻" data-en="News">News</span></h2>
-      <div class="news-scroll" tabindex="0" role="region" aria-label="News timeline">
-        <ul class="news news-copy" data-lang-block="zh" hidden>
-        <li data-date-basis="arxiv-v1" data-date-status="verified" data-news-month="2026-09"><span class="date">2026.09</span><span>首次向 <strong>arXiv</strong> 提交预印本《Gradient-Update Mismatch: Rethinking Conflict-Free Training of Physics-Informed Neural Networks》。</span></li>
-        <li data-date-basis="publication-date" data-date-status="user-provided" data-news-month="2026-08"><span class="date">2026.08</span><span>论文《LDNO: A low-power dynamic neural operator inspired by liquid state machines for solving partial differential equations》发表于 <strong>Neurocomputing（CCF-C，JCR Q1）</strong>。</span></li>
-        <li data-date-basis="publication-date" data-date-status="user-provided" data-news-month="2026-06"><span class="date">2026.06</span><span>论文《Physics-informed residual learning with low-rank adaptation for unsupervised mesh generation》发表于 <strong>Computer-Aided Geometric Design（CCF-B，JCR Q2）</strong>。</span></li>
-        <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2026-03"><span class="date">2026.03</span><span>论文《Learning to Generate Structured Meshes with In-Context: Toward Generalization in Mesh Generation》在线发表于 <strong>AAAI 2026（CCF-A）</strong> 会议论文集。</span></li>
-        <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2026-02"><span class="date">2026.02</span><span>论文《MeshONet: A Generalizable and Efficient Operator Learning Method for Structured Mesh Generation》在线发表于 <strong>Neural Networks（CCF-B，JCR Q1）</strong>。</span></li>
-        <li data-date-basis="arxiv-v1" data-date-status="verified" data-news-month="2026-02"><span class="date">2026.02</span><span>首次向 <strong>arXiv</strong> 提交预印本《Prior-Guided Symbolic Regression: Towards Scientific Consistency in Equation Discovery》。</span></li>
-        <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2025-12"><span class="date">2025.12</span><span>论文《PI-MeshONet: A generalizable and self-supervised method for structured mesh generation》在线发表于 <strong>Knowledge-Based Systems（CCF-C，JCR Q1）</strong>。</span></li>
-        <li data-date-basis="publication-date" data-date-status="user-provided" data-news-month="2025-06"><span class="date">2025.06</span><span>论文《Dual-Spectral Neural Operator for Solving Partial Differential Equations》发表于 <strong>IJCNN 2025（CCF-C）</strong> 会议论文集。</span></li>
-        <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2025-03"><span class="date">2025.03</span><span>论文《A Physics-Informed Generative Adversarial Network for Advancing Solutions in Ocean Acoustics》在线发表于 <strong>Physics of Fluids（JCR Q1）</strong>。</span></li>
-        <li data-date-basis="personal" data-date-status="verified" data-news-month="2023-09"><span class="date">2023.09</span><span>开始在 <strong>国防科技大学</strong> 攻读计算机科学与技术专业博士学位。</span></li>
-        </ul>
-        <ul class="news news-copy" data-lang-block="en">
-        <li data-date-basis="arxiv-v1" data-date-status="verified" data-news-month="2026-09"><span class="date">Sep 2026</span><span>First submitted <strong>“Gradient-Update Mismatch: Rethinking Conflict-Free Training of Physics-Informed Neural Networks”</strong> to arXiv.</span></li>
-        <li data-date-basis="publication-date" data-date-status="user-provided" data-news-month="2026-08"><span class="date">Aug 2026</span><span>Our paper <strong>“LDNO: A low-power dynamic neural operator inspired by liquid state machines for solving partial differential equations”</strong> was published in <strong>Neurocomputing (CCF-C, JCR Q1)</strong>.</span></li>
-        <li data-date-basis="publication-date" data-date-status="user-provided" data-news-month="2026-06"><span class="date">Jun 2026</span><span>Our paper <strong>“Physics-informed residual learning with low-rank adaptation for unsupervised mesh generation”</strong> was published in <strong>Computer-Aided Geometric Design (CCF-B, JCR Q2)</strong>.</span></li>
-        <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2026-03"><span class="date">Mar 2026</span><span>Our paper <strong>“Learning to Generate Structured Meshes with In-Context: Toward Generalization in Mesh Generation”</strong> was published online in the proceedings of <strong>AAAI 2026 (CCF-A)</strong>.</span></li>
-        <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2026-02"><span class="date">Feb 2026</span><span>Our paper <strong>“MeshONet: A Generalizable and Efficient Operator Learning Method for Structured Mesh Generation”</strong> was published online in <strong>Neural Networks (CCF-B, JCR Q1)</strong>.</span></li>
-        <li data-date-basis="arxiv-v1" data-date-status="verified" data-news-month="2026-02"><span class="date">Feb 2026</span><span>First submitted <strong>“Prior-Guided Symbolic Regression: Towards Scientific Consistency in Equation Discovery”</strong> to arXiv.</span></li>
-        <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2025-12"><span class="date">Dec 2025</span><span>Our paper <strong>“PI-MeshONet: A generalizable and self-supervised method for structured mesh generation”</strong> was published online in <strong>Knowledge-Based Systems (CCF-C, JCR Q1)</strong>.</span></li>
-        <li data-date-basis="publication-date" data-date-status="user-provided" data-news-month="2025-06"><span class="date">Jun 2025</span><span>Our paper <strong>“Dual-Spectral Neural Operator for Solving Partial Differential Equations”</strong> was published in the proceedings of <strong>IJCNN 2025 (CCF-C)</strong>.</span></li>
-        <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2025-03"><span class="date">Mar 2025</span><span>Our paper <strong>“A Physics-Informed Generative Adversarial Network for Advancing Solutions in Ocean Acoustics”</strong> was published online in <strong>Physics of Fluids (JCR Q1)</strong>.</span></li>
-        <li data-date-basis="personal" data-date-status="verified" data-news-month="2023-09"><span class="date">Sep 2023</span><span>Started my Ph.D. in Computer Science and Technology at the <strong>National University of Defense Technology</strong>.</span></li>
-        </ul>
-      </div>
-    </section>
+          <section id="news" aria-labelledby="news-title">
+            <h2 id="news-title" class="section-heading"><span class="i18n" data-zh="新闻" data-en="News">News</span></h2>
+            <div class="news-scroll" tabindex="0" role="region" aria-labelledby="news-title">
+              <ul class="news news-copy" data-lang-block="zh" hidden>
+                <li data-date-basis="personal" data-date-status="user-provided" data-news-month="2026-11"><span class="date">2026.11</span><span>获得<strong>国家奖学金</strong>。</span></li>
+                <li data-date-basis="arxiv-v1" data-date-status="verified" data-news-month="2026-09"><span class="date">2026.09</span><span>首次向 <strong>arXiv</strong> 提交预印本《Gradient-Update Mismatch: Rethinking Conflict-Free Training of Physics-Informed Neural Networks》。</span></li>
+                <li data-date-basis="publication-date" data-date-status="user-provided" data-news-month="2026-08"><span class="date">2026.08</span><span>论文《LDNO: A low-power dynamic neural operator inspired by liquid state machines for solving partial differential equations》发表于 <strong>Neurocomputing（CCF-C，JCR Q1）</strong>。</span></li>
+                <li data-date-basis="publication-date" data-date-status="user-provided" data-news-month="2026-06"><span class="date">2026.06</span><span>论文《Physics-informed residual learning with low-rank adaptation for unsupervised mesh generation》发表于 <strong>Computer-Aided Geometric Design（CCF-B，JCR Q2）</strong>。</span></li>
+                <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2026-03"><span class="date">2026.03</span><span>论文《Learning to Generate Structured Meshes with In-Context: Toward Generalization in Mesh Generation》在线发表于 <strong>AAAI 2026（CCF-A）</strong> 会议论文集。</span></li>
+                <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2026-02"><span class="date">2026.02</span><span>论文《MeshONet: A Generalizable and Efficient Operator Learning Method for Structured Mesh Generation》在线发表于 <strong>Neural Networks（CCF-B，JCR Q1）</strong>。</span></li>
+                <li data-date-basis="arxiv-v1" data-date-status="verified" data-news-month="2026-02"><span class="date">2026.02</span><span>首次向 <strong>arXiv</strong> 提交预印本《Prior-Guided Symbolic Regression: Towards Scientific Consistency in Equation Discovery》。</span></li>
+                <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2025-12"><span class="date">2025.12</span><span>论文《PI-MeshONet: A generalizable and self-supervised method for structured mesh generation》在线发表于 <strong>Knowledge-Based Systems（CCF-C，JCR Q1）</strong>。</span></li>
+                <li data-date-basis="publication-date" data-date-status="user-provided" data-news-month="2025-06"><span class="date">2025.06</span><span>论文《Dual-Spectral Neural Operator for Solving Partial Differential Equations》发表于 <strong>IJCNN 2025（CCF-C）</strong> 会议论文集。</span></li>
+                <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2025-03"><span class="date">2025.03</span><span>论文《A Physics-Informed Generative Adversarial Network for Advancing Solutions in Ocean Acoustics》在线发表于 <strong>Physics of Fluids（JCR Q1）</strong>。</span></li>
+                <li data-date-basis="personal" data-date-status="verified" data-news-month="2023-09"><span class="date">2023.09</span><span>开始在 <strong>国防科技大学</strong> 攻读计算机科学与技术专业博士学位。</span></li>
+              </ul>
+              <ul class="news news-copy" data-lang-block="en">
+                <li data-date-basis="personal" data-date-status="user-provided" data-news-month="2026-11"><span class="date">Nov 2026</span><span>Awarded the <strong>National Scholarship</strong>.</span></li>
+                <li data-date-basis="arxiv-v1" data-date-status="verified" data-news-month="2026-09"><span class="date">Sep 2026</span><span>First submitted <strong>“Gradient-Update Mismatch: Rethinking Conflict-Free Training of Physics-Informed Neural Networks”</strong> to arXiv.</span></li>
+                <li data-date-basis="publication-date" data-date-status="user-provided" data-news-month="2026-08"><span class="date">Aug 2026</span><span>Our paper <strong>“LDNO: A low-power dynamic neural operator inspired by liquid state machines for solving partial differential equations”</strong> was published in <strong>Neurocomputing (CCF-C, JCR Q1)</strong>.</span></li>
+                <li data-date-basis="publication-date" data-date-status="user-provided" data-news-month="2026-06"><span class="date">Jun 2026</span><span>Our paper <strong>“Physics-informed residual learning with low-rank adaptation for unsupervised mesh generation”</strong> was published in <strong>Computer-Aided Geometric Design (CCF-B, JCR Q2)</strong>.</span></li>
+                <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2026-03"><span class="date">Mar 2026</span><span>Our paper <strong>“Learning to Generate Structured Meshes with In-Context: Toward Generalization in Mesh Generation”</strong> was published online in the proceedings of <strong>AAAI 2026 (CCF-A)</strong>.</span></li>
+                <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2026-02"><span class="date">Feb 2026</span><span>Our paper <strong>“MeshONet: A Generalizable and Efficient Operator Learning Method for Structured Mesh Generation”</strong> was published online in <strong>Neural Networks (CCF-B, JCR Q1)</strong>.</span></li>
+                <li data-date-basis="arxiv-v1" data-date-status="verified" data-news-month="2026-02"><span class="date">Feb 2026</span><span>First submitted <strong>“Prior-Guided Symbolic Regression: Towards Scientific Consistency in Equation Discovery”</strong> to arXiv.</span></li>
+                <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2025-12"><span class="date">Dec 2025</span><span>Our paper <strong>“PI-MeshONet: A generalizable and self-supervised method for structured mesh generation”</strong> was published online in <strong>Knowledge-Based Systems (CCF-C, JCR Q1)</strong>.</span></li>
+                <li data-date-basis="publication-date" data-date-status="user-provided" data-news-month="2025-06"><span class="date">Jun 2025</span><span>Our paper <strong>“Dual-Spectral Neural Operator for Solving Partial Differential Equations”</strong> was published in the proceedings of <strong>IJCNN 2025 (CCF-C)</strong>.</span></li>
+                <li data-date-basis="online-publication" data-date-status="verified" data-news-month="2025-03"><span class="date">Mar 2025</span><span>Our paper <strong>“A Physics-Informed Generative Adversarial Network for Advancing Solutions in Ocean Acoustics”</strong> was published online in <strong>Physics of Fluids (JCR Q1)</strong>.</span></li>
+                <li data-date-basis="personal" data-date-status="verified" data-news-month="2023-09"><span class="date">Sep 2023</span><span>Started my Ph.D. in Computer Science and Technology at the <strong>National University of Defense Technology</strong>.</span></li>
+              </ul>
+            </div>
+          </section>
         </div>
       </div>
-    </section>
+    </div>
 
     <section class="research" id="publications">
       <div class="container">
-        <h2><span class="i18n" data-zh="研究成果" data-en="My Research">My Research</span></h2>
+        <h2 class="section-heading"><span class="i18n" data-zh="研究成果" data-en="My Research">My Research</span></h2>
       <article class="pub">
         <div class="paper-media">
         <a class="paper-preview" href="https://arxiv.org/abs/2602.13021" target="_blank" rel="noopener" aria-label="Read paper: Prior-Guided Symbolic Regression: Towards Scientific Consistency in Equation Discovery">
@@ -540,10 +516,11 @@
         const statisticsURL = link ? new URL(link.href, location.href) : null;
         const hasStatistics = statisticsURL &&
           /^(www\.)?(mapmyvisitors|clustrmaps)\.com$/.test(statisticsURL.hostname) &&
-          /^\/site\//.test(statisticsURL.pathname);
+          /^\/(site|web)\/[^/]+/.test(statisticsURL.pathname);
         const hasData = Boolean(rendered.querySelector('.mmvstarker') || hasStatistics);
         status.hidden = hasData || !timedOut;
         if (!hasData) return false;
+        globe.classList.remove('is-unavailable');
         clearTimeout(timeout);
         observer.disconnect();
         return true;
@@ -554,6 +531,7 @@
       timeout = setTimeout(() => {
         if (checkGlobe()) return;
         timedOut = true;
+        globe.classList.add('is-unavailable');
         status.hidden = false;
         const hasGlobe = Boolean(globe.querySelector('.mmvst_outer'));
         status.dataset.zh = hasGlobe ? '地点数据暂不可用' : '访客地球暂不可用';
